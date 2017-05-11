@@ -4,9 +4,9 @@ using System.Collections;
 using System.Reflection;
 using System.Collections.Generic;
 
-namespace LibUnity.Test {
+namespace LibUnity.UnitTest {
   /**
-   * \ingroup LibUnity.Test
+   * \ingroup LibUnity.UnitTest
    *
    * \class TestCase
    *

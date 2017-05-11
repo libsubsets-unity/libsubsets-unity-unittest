@@ -4,7 +4,7 @@ using System.Collections;
 using System.Reflection;
 using UnityEngine;
 
-namespace LibUnity.Test {
+namespace LibUnity.UnitTest {
   /**
    * \class TestSuite
    *

@@ -1,6 +1,6 @@
 using System;
 
-namespace LibUnity.Test {
+namespace LibUnity.UnitTest {
   /**
    * \class TestResult
    *

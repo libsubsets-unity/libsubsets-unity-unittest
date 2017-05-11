@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 
-namespace LibUnity.Test {
+namespace LibUnity.UnitTest {
   public delegate void RunsCallback();
 
   public class Runs : AsyncTask {

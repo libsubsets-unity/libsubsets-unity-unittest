@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace LibUnity.Test {
+namespace LibUnity.UnitTest {
   /**
    * \class AsyncTask
    *

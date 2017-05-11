@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LibUnity.Test {
+namespace LibUnity.UnitTest {
   public class Waits : AsyncTask {
     public Waits(long wait_time) {
       this.wait_time = wait_time;

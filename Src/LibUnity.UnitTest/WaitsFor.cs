@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 
-namespace LibUnity.Test {
+namespace LibUnity.UnitTest {
   public delegate bool IsDoneCallback();
 
   public class WaitsFor : AsyncTask {
