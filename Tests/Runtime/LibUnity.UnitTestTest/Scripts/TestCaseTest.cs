@@ -3,7 +3,7 @@ using LibUnity.UnitTest;
 
 namespace LibUnity.UnitTestTest.Test {
 
-  public class TestCase_test : TestCase {
+  public class TestCaseTest : TestCase {
     [TestMethod]
     public void TestMethod() {
       test_case = CreateTestCase(typeof(WasRun), "TestMethod") as WasRun;

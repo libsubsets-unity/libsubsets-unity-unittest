@@ -1,0 +1,15 @@
+{
+  "name": "com.maayalee.libunity-unitest",
+  "version": "1.0.0",
+  "displayName": "libunity-unitest",
+  "unity": "2019.4",
+  "unityRelease": "21f1",
+  "keywords": [
+    "unittest"
+  ],
+  "author": {
+    "name": "Lee, Hyeon-gi",
+    "email": "maaya.lee@gmail.com",
+    "url": ""
+  }
+}
