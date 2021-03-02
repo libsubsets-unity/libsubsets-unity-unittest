@@ -1,27 +1,28 @@
 ﻿using System;
+using UnityEngine;
 
 namespace LibUnity.UnitTest {
   public class Waits : AsyncTask {
-    public Waits(long wait_time) {
-      this.wait_time = wait_time;
+    public Waits(long waitTime) {
+      this.waitTime = waitTime;
     }
 
     public override void Start() {
-      this.complete_time = GetCurrentTime() + wait_time;
+      this.completeTime = GetCurrentTime() + waitTime;
     }
 
     override public bool IsWait() {
-      return GetCurrentTime() < complete_time ? true : false;
+      return GetCurrentTime() < completeTime ? true : false;
     }
 
     override public void End() {
     }
 
     private long GetCurrentTime() {
-      return (long)(DateTime.Now.Ticks / 10000.0f);
+      return (long)(DateTime.Now.Ticks / 10000);
     }
 
-    private long wait_time;
-    private long complete_time;
+    private long waitTime;
+    private long completeTime;
   }
 }

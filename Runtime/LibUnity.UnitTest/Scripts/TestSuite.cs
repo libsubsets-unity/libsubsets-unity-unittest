@@ -13,18 +13,18 @@ namespace LibUnity.UnitTest {
    * \author Lee, Hyeon-gi
    */
   public class TestSuite : MonoBehaviour {
-    public string suite_name;
+    public string suiteName;
 
     public void Awake() {
-      if (0 == suite_name.Length)
-        suite_name = gameObject.name;
+      if (0 == suiteName.Length)
+        suiteName = gameObject.name;
 
       tests = new List<TestCase>();
-      TestCase[] test_cases = GetComponents<TestCase>();
-      for (int i = 0; i < test_cases.Length; i++) {
-        AddTests(test_cases[i]);
+      TestCase[] testCases = GetComponents<TestCase>();
+      for (int i = 0; i < testCases.Length; i++) {
+        AddTests(testCases[i]);
       }
-      test_result = new TestResult(suite_name);
+      testResult = new TestResult(suiteName);
     }
 
     private void AddTests(TestCase test_case) {
@@ -34,9 +34,9 @@ namespace LibUnity.UnitTest {
       }
     }
 
-    protected TestCase CreateTestCase(Type test_case_type, string method_name) {
-      TestCase test = gameObject.AddComponent(test_case_type) as TestCase;
-      test.SetRunMethodName(method_name);
+    protected TestCase CreateTestCase(Type testCaseType, string methodName) {
+      TestCase test = gameObject.AddComponent(testCaseType) as TestCase;
+      test.SetRunMethodName(methodName);
       return test;
     }
 
@@ -46,7 +46,7 @@ namespace LibUnity.UnitTest {
 
     private IEnumerator RunTests() {
       foreach (TestCase current in tests) {
-        current.Run(test_result);
+        current.Run(testResult);
         while (!current.IsComplete()) {
           yield return null;
         }
@@ -62,17 +62,17 @@ namespace LibUnity.UnitTest {
     }
 
     public string Summary() {
-      return test_result.Summary();
+      return testResult.Summary();
     }
 
     public void PrintSummary() {
-      if (test_result.IsFailed())
+      if (testResult.IsFailed())
         Debug.LogError(Summary());
       else
         Debug.Log(Summary());
     }
 
     private List<TestCase> tests;
-    private TestResult test_result;
+    private TestResult testResult;
   }
 }

@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using System;
 using System.Collections;
 using System.Reflection;
@@ -10,7 +10,7 @@ namespace LibUnity.UnitTest {
    *
    * \class TestCase
    *
-   * \brief Å×½ºÆ® ¸Ş¼­µåµéÀ» ÇÏ³ªÀÇ Å×½ºÆ® ÄÉÀÌ½º·Î ¹­¾îÁÖ´Â ¿ªÇÒÀ» Ã³¸®
+   * \brief í…ŒìŠ¤íŠ¸ ë©”ì„œë“œë“¤ì„ í•˜ë‚˜ì˜ í…ŒìŠ¤íŠ¸ ì¼€ì´ìŠ¤ë¡œ ë¬¶ì–´ì£¼ëŠ” ì—­í• ì„ ì²˜ë¦¬
    * \author Lee, Hyeon-gi
    */
   public abstract class TestCase : MonoBehaviour {
@@ -21,21 +21,21 @@ namespace LibUnity.UnitTest {
     abstract protected void SetUp();
     abstract protected void TearDown();
 
-    public void SetRunMethodName(string method_name) {
-      this.method_name = method_name;
+    public void SetRunMethodName(string methodName) {
+      this.methodName = methodName;
     }
 
-    public void Run(TestResult test_result) {
-      this.test_result = test_result;
+    public void Run(TestResult testResult) {
+      this.testResult = testResult;
       StartCoroutine(RunTest());
     }
 
     private IEnumerator RunTest() {
-      test_result.TestStart();
+      testResult.TestStart();
       SetUp();
       RunMethod();
 
-      foreach (AsyncTask task in async_tasks) {
+      foreach (AsyncTask task in asyncTasks) {
         yield return null;
         task.Start();
         while (task.IsWait()) {
@@ -57,9 +57,9 @@ namespace LibUnity.UnitTest {
       try {
         try {
           Type thisType = this.GetType();
-          MethodInfo theMethod = thisType.GetMethod(method_name);
+          MethodInfo theMethod = thisType.GetMethod(methodName);
           if (null == theMethod)
-            throw new Exception(method_name + " is null");
+            throw new Exception(methodName + " is null");
           theMethod.Invoke(this, null);
         }
         catch (TargetInvocationException e) {
@@ -72,12 +72,12 @@ namespace LibUnity.UnitTest {
     }
 
     private void Failed(Exception e) {
-      test_result.TestFailed();
+      testResult.TestFailed();
       System.Diagnostics.StackTrace stack_trace =
         new System.Diagnostics.StackTrace(e, true);
       string file_name = stack_trace.GetFrame(1).GetFileName();
       int file_line = stack_trace.GetFrame(1).GetFileLineNumber();
-      Debug.LogError(e.Message + " : " + GetType().Name + "::" + method_name +
+      Debug.LogError(e.Message + " : " + GetType().Name + "::" + methodName +
         "\n" + file_name + ":" + file_line);
     }
 
@@ -110,26 +110,26 @@ namespace LibUnity.UnitTest {
     }
 
     /**
-     * ½Ã°£¸¸Å­ ´ë±âÈÄ ´ÙÀ½ Å×½ºÆ®¸¦ ÁøÇà
+     * ì‹œê°„ë§Œí¼ ëŒ€ê¸°í›„ ë‹¤ìŒ í…ŒìŠ¤íŠ¸ë¥¼ ì§„í–‰
      *
-     * \param wait_time ´ë±â½Ã°£(milliseconds)
+     * \param wait_time ëŒ€ê¸°ì‹œê°„(milliseconds)
      */
     public void Waits(long wait_time) {
-      async_tasks.Add(new Waits(wait_time));
+      asyncTasks.Add(new Waits(wait_time));
     }
 
     /**
-      * ³Ñ°ÜÁø Á¶°Ç °Ë»çÇÔ¼ö¸¦ ÅëÇØ ´ë±â¸¦ °áÁ¤ÇÑÈÄ ´ÙÀ½ Å×½ºÆ® ÁøÇà
+      * ë„˜ê²¨ì§„ ì¡°ê±´ ê²€ì‚¬í•¨ìˆ˜ë¥¼ í†µí•´ ëŒ€ê¸°ë¥¼ ê²°ì •í•œí›„ ë‹¤ìŒ í…ŒìŠ¤íŠ¸ ì§„í–‰
       * 
-      * \parma is_done ÀÛ¾÷ÀÌ ¿Ï·á µÇ¾ú´ÂÁö¸¦ Á¶È¸ÇÏ´Â Äİ¹é ÇÔ¼ö. 
-      * \param timeout ÀÛ¾÷ÀÇ Å¸ÀÓ ¾Æ¿ô ½Ã°£
+      * \parma isDone ì‘ì—…ì´ ì™„ë£Œ ë˜ì—ˆëŠ”ì§€ë¥¼ ì¡°íšŒí•˜ëŠ” ì½œë°± í•¨ìˆ˜. 
+      * \param timeout ì‘ì—…ì˜ íƒ€ì„ ì•„ì›ƒ ì‹œê°„
       */
-    public void WaitsFor(IsDoneCallback is_done, long timeout) {
-      async_tasks.Add(new WaitsFor(is_done, timeout));
+    public void WaitsFor(IsDoneCallback isDone, long timeout) {
+      asyncTasks.Add(new WaitsFor(isDone, timeout));
     }
 
     public void Runs(RunsCallback callback) {
-      async_tasks.Add(new Runs(callback));
+      asyncTasks.Add(new Runs(callback));
     }
 
     virtual public List<TestCase> get_tests() {
@@ -144,15 +144,15 @@ namespace LibUnity.UnitTest {
       return result;
     }
 
-    protected TestCase CreateTestCase(Type test_case_type, string method_name) {
+    protected TestCase CreateTestCase(Type test_case_type, string methodName) {
       TestCase test = gameObject.AddComponent(test_case_type) as TestCase;
-      test.SetRunMethodName(method_name);
+      test.SetRunMethodName(methodName);
       return test;
     }
 
-    private string method_name;
-    private TestResult test_result;
-    private List<AsyncTask> async_tasks = new List<AsyncTask>();
+    private string methodName;
+    private TestResult testResult;
+    private List<AsyncTask> asyncTasks = new List<AsyncTask>();
     private bool test_complete = false;
 
   }

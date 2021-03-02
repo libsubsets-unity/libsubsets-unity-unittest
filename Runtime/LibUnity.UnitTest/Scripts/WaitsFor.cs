@@ -11,7 +11,7 @@ namespace LibUnity.UnitTest {
     }
 
     public override void Start() {
-      this.complete_time = GetCurrentTime() + timeout;
+      this.completeTime = GetCurrentTime() + timeout;
     }
 
     override public bool IsWait() {
@@ -22,7 +22,7 @@ namespace LibUnity.UnitTest {
     }
 
     private bool IsTimeout() {
-      return GetCurrentTime() >= complete_time;
+      return GetCurrentTime() >= completeTime;
     }
 
     override public void End() {
@@ -32,11 +32,11 @@ namespace LibUnity.UnitTest {
     }
 
     private long GetCurrentTime() {
-      return (long)(DateTime.Now.Ticks / 10000.0f);
-    }    
+      return (long)(DateTime.Now.Ticks / 10000);
+    }
 
     private IsDoneCallback callback;
     private long timeout;
-    private long complete_time;
+    private long completeTime;
   }
 }

@@ -1,37 +1,37 @@
-using System;
+ï»¿using System;
 
 namespace LibUnity.UnitTest {
   /**
    * \class TestResult
    *
-   * \brief Å×½ºÆ® °á°ú¸¦ Ã³¸®ÇÏ´Â Å¬·¡½º
+   * \brief í…ŒìŠ¤íŠ¸ ê²°ê³¼ë¥¼ ì²˜ë¦¬í•˜ëŠ” í´ë˜ìŠ¤
    * \author Lee, Hyeon-gi
    */
   public class TestResult {
 
-    public TestResult(string suite_name) {
-      this.suite_name = suite_name;
+    public TestResult(string suiteName) {
+      this.suiteName = suiteName;
     }
   
     public void TestStart() {
-      run_count++;
+      runCount++;
     }
 
     public void TestFailed() {
-      failed_count++;
+      failedCount++;
     }
 
     public bool IsFailed() {
-      return failed_count > 0 ? true : false;
+      return failedCount > 0 ? true : false;
     }
 
     public string Summary() {
-      return suite_name + ": " +  run_count + " run, " + failed_count + " failed";
+      return suiteName + ": " +  runCount + " run, " + failedCount + " failed";
     }
 
-    private string suite_name;
-    private int run_count = 0;
-    private int failed_count = 0;
+    private string suiteName;
+    private int runCount = 0;
+    private int failedCount = 0;
 
   }
 }

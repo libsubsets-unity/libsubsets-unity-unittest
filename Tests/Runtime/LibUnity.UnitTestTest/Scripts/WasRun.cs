@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using LibUnity.UnitTest;
 
-namespace LibUnity.UnitTestTest.Test {
+namespace LibUnity.UnitTestTest {
 
   public class WasRun : TestCase {
     public string result = "";
@@ -17,8 +17,8 @@ namespace LibUnity.UnitTestTest.Test {
       result += "TearDown";
     }
 
-    public void test_method() {
-      result += "test_method ";
+    public void TestMethod() {
+      result += "TestMethod ";
     }
   }
 }

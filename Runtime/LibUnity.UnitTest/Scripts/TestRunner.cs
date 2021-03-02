@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using System;
 using System.Collections;
 
@@ -6,18 +6,18 @@ namespace LibUnity.UnitTest {
   /**
    * \class TestRunner
    *
-   * \brief Å×½ºÆ®½´Æ® Â÷·Ê´ë·Î ½ÇÇàÇØÁÖ´Â Å¬·¡½º.
+   * \brief í…ŒìŠ¤íŠ¸ìŠˆíŠ¸ ì°¨ë¡€ëŒ€ë¡œ ì‹¤í–‰í•´ì£¼ëŠ” í´ë˜ìŠ¤.
    * 
    * \author Lee, Hyeon-gi
    */
   public class TestRunner : MonoBehaviour {
     public void Start() {
-      test_suites = FindObjectsOfType(typeof(TestSuite)) as TestSuite[];
+      testSuites = FindObjectsOfType(typeof(TestSuite)) as TestSuite[];
       StartCoroutine(RunSuites());
     }
 
     private IEnumerator RunSuites() {
-      foreach (TestSuite suite in test_suites) {
+      foreach (TestSuite suite in testSuites) {
         suite.Run();
         while (!suite.IsComplete()) {
           yield return null;
@@ -26,7 +26,7 @@ namespace LibUnity.UnitTest {
       }
     }
 
-    private TestSuite[] test_suites;
+    private TestSuite[] testSuites;
   }
 
 }
