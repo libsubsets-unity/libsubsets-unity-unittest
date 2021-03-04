@@ -9,11 +9,11 @@ namespace LibUnity.UnitTestTest {
       testCase = CreateTestCase(typeof(WasRun), "TestMethod") as WasRun;
       testCase.Run(result);
       Waits(1);
-      Runs(on_run_result);
+      Runs(onRunResult);
     }
 
-    //[TestMethod]
-    public void test_async() {
+    [TestMethod]
+    public void testAsync() {
       WaitsFor(delegate () {
         return true;
       }, 1000);
@@ -21,14 +21,14 @@ namespace LibUnity.UnitTestTest {
         testCase = CreateTestCase(typeof(WasRun), "TestMethod") as WasRun;
         testCase.Run(result);
       });
-      Runs(on_run_result);
+      Runs(onRunResult);
     }
 
-    private void on_run_result() {
+    private void onRunResult() {
       Assert(testCase.result == "SetUp TestMethod TearDown");
     }
 
-    //[TestMethod]
+    [TestMethod]
     public void TestResult() {
       testCase = CreateTestCase(typeof(WasRun), "TestMethod") as WasRun;
       testCase.Run(result);
