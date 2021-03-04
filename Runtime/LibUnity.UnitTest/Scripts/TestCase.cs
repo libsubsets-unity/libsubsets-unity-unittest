@@ -73,12 +73,13 @@ namespace LibUnity.UnitTest {
 
     private void Failed(Exception e) {
       testResult.TestFailed();
-      System.Diagnostics.StackTrace stack_trace =
-        new System.Diagnostics.StackTrace(e, true);
-      string file_name = stack_trace.GetFrame(1).GetFileName();
-      int file_line = stack_trace.GetFrame(1).GetFileLineNumber();
-      Debug.LogError(e.Message + " : " + GetType().Name + "::" + methodName +
-        "\n" + file_name + ":" + file_line);
+      System.Diagnostics.StackTrace stack_trace = new System.Diagnostics.StackTrace(e, true);
+      foreach (System.Diagnostics.StackFrame frame in stack_trace.GetFrames()) {
+        string file_name = frame.GetFileName();
+        int file_line = frame.GetFileLineNumber();
+        Debug.LogError(e.Message + " : " + GetType().Name + "::" + methodName +
+          "\n" + file_name + ":" + file_line);
+      }
     }
 
     public bool IsComplete() {
