@@ -8,7 +8,7 @@ namespace LibUnity.UnitTestTest {
     public void TestMethod() {
       testCase = CreateTestCase(typeof(WasRun), "TestMethod") as WasRun;
       testCase.Run(result);
-      Waits(1);
+      Waits(10);
       Runs(onRunResult);
     }
 
