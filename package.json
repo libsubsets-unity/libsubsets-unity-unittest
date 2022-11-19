@@ -1,7 +1,7 @@
 {
-  "name": "com.maayalee.libunity-unitest",
-  "version": "1.0.2",
-  "displayName": "LibUnity UnitTest",
+  "name": "com.maayalee.libsubsets-unity-unitest",
+  "version": "1.0.1",
+  "displayName": "Subsets UnitTest",
   "unity": "2019.4",
   "unityRelease": "21f1",
   "keywords": [
