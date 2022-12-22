@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using LibUnity.UnitTest;
+using LibSubsets.UnitTest;
 
-namespace LibUnity.UnitTestTest {
+namespace LibSubsets.UnitTestTest {
 
   public class WasRun : TestCase {
     public string result = "";

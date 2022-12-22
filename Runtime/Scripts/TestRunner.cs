@@ -2,7 +2,7 @@
 using System;
 using System.Collections;
 
-namespace LibUnity.UnitTest {
+namespace LibSubsets.UnitTest {
   /**
    * \class TestRunner
    *

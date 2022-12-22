@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace LibUnity.UnitTest {
+namespace LibSubsets.UnitTest {
   [AttributeUsage(AttributeTargets.Method)]
   public class TestMethod : Attribute {
     public TestMethod() {

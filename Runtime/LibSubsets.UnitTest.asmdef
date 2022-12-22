@@ -1,9 +1,6 @@
 {
-    "name": "LibUnity.UnitTestTest",
-    "rootNamespace": "",
-    "references": [
-        "GUID:d3143601704a03b4b9fba19c5c03c155"
-    ],
+    "name": "LibSubsets.UnitTest",
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

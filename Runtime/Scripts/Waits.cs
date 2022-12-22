@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace LibUnity.UnitTest {
+namespace LibSubsets.UnitTest {
   public class Waits : AsyncTask {
     public Waits(long waitTime) {
       this.waitTime = waitTime;
